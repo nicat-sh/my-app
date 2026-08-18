@@ -1,0 +1,20 @@
+name: Deploy From 2nd Branch
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      # Məhz 'dev' (2-ci branch) kodlarını çəkir (checkout edir)
+      - name: Checkout 2nd Branch Code
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Read Code Content
+        run: |
+          echo "=== 2-ci branch-ın fayl məzmunu ==="
+          cat index.html
+          echo "Deploy uğurla tamamlandı!"
